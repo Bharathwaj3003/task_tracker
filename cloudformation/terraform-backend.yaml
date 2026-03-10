@@ -1,0 +1,8 @@
+Resources:
+
+  TerraformStateBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: tasktracker-terraform-state-demo
+      VersioningConfiguration:
+        Status: Enabled
