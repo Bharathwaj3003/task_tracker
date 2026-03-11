@@ -7,9 +7,11 @@
       apt:
         update_cache: yes
 
-    - name: install docker
+    - name: install docker and docker compose
       apt:
-        name: docker.io
+        name:
+          - docker.io
+          - docker-compose-plugin
         state: present
 
     - name: start docker
@@ -17,3 +19,9 @@
         name: docker
         state: started
         enabled: yes
+
+    - name: add ubuntu user to docker group
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes
