@@ -29,7 +29,7 @@ jobs:
 
           cd /home/ubuntu
 
-          sed -i "s|task-tracker:.*|task-tracker:${{ github.event.inputs.tag }}|g" docker-compose.yml
+          sed -i "s|task_tracker:.*|task_tracker:${{ github.event.inputs.tag }}|g" docker-compose.yml
 
           docker compose pull
           docker compose up -d
