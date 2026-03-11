@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: task-tracker-server
   become: yes
 
   tasks:

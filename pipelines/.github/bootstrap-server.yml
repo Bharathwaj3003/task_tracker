@@ -1,0 +1,33 @@
+name: bootstrap-server
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  run-ansible:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install Ansible
+        run: |
+          sudo apt update
+          sudo apt install -y ansible
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+      - name: Run Ansible playbook
+        run: |
+          ansible-playbook \
+          -i ansible/inventory.ini \
+          ansible/install_docker.yml \
+          --private-key ~/.ssh/id_rsa
