@@ -7,11 +7,9 @@
       apt:
         update_cache: yes
 
-    - name: install docker and docker compose
+    - name: install docker
       apt:
-        name:
-          - docker.io
-          - docker-compose-plugin
+        name: docker.io
         state: present
 
     - name: start docker
@@ -25,3 +23,19 @@
         name: ubuntu
         groups: docker
         append: yes
+
+    - name: create docker cli plugin directory
+      file:
+        path: /home/ubuntu/.docker/cli-plugins
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+        mode: '0755'
+
+    - name: download docker compose plugin
+      get_url:
+        url: https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-linux-x86_64
+        dest: /home/ubuntu/.docker/cli-plugins/docker-compose
+        mode: '0755'
+        owner: ubuntu
+        group: ubuntu
