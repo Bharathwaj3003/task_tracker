@@ -67,37 +67,37 @@ The project includes:
 ---
 
 # Repository Structure
-task-tracker
-│
-├── code
-│ └── Application source code
-│
-├── docker
-│ ├── Dockerfile
-│ └── docker-compose.yml
-│
-├── terraform
-│ ├── backend.tf
-│ ├── provider.tf
-│ ├── main.tf
-│ └── outputs.tf
-│
-├── cloudformation
-│ └── terraform-backend.yaml
-│
-├── ansible
-│ ├── install_docker.yml
-│ └── inventory.ini
-│
-├── prometheus
-│ └── prometheus.yml
-│
-├── .github/workflows
-│ ├── bootstrap-server.yml
-│ ├── build-and-deploy.yml
-│ └── rollback.yml
-│
-└── README.md
+                task-tracker
+                │
+                ├── code
+                │ └── Application source code
+                │
+                ├── docker
+                │ ├── Dockerfile
+                │ └── docker-compose.yml
+                │
+                ├── terraform
+                │ ├── backend.tf
+                │ ├── provider.tf
+                │ ├── main.tf
+                │ └── outputs.tf
+                │
+                ├── cloudformation
+                │ └── terraform-backend.yaml
+                │
+                ├── ansible
+                │ ├── install_docker.yml
+                │ └── inventory.ini
+                │
+                ├── prometheus
+                │ └── prometheus.yml
+                │
+                ├── .github/workflows
+                │ ├── bootstrap-server.yml
+                │ ├── build-and-deploy.yml
+                │ └── rollback.yml
+                │
+                └── README.md
 
 
 ---
