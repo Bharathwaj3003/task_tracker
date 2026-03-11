@@ -15,9 +15,8 @@ services:
       - "5432:5432"
 
   api:
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile
+    image: barrycenter/task_tracker:latest
+    restart: always
     ports:
       - "3000:3000"
     depends_on:
