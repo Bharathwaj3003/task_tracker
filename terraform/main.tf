@@ -21,16 +21,16 @@ data "aws_vpc" "default" {
   default = true
 }
 
-resource "aws_security_group" "task_sg" {
+resource "aws_security_group" "task_security_group" {
 
-  name        = "task-tracker-sg"
-  description = "Allow API and SSH"
+  name        = "task-tracker-security-group"
+  description = "Allow API, SSH and monitoring"
   vpc_id      = data.aws_vpc.default.id
 
   ingress {
     description = "API access"
-    from_port   = 3000
-    to_port     = 3000
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -39,6 +39,30 @@ resource "aws_security_group" "task_sg" {
     description = "SSH access"
     from_port   = 22
     to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "Prometheus"
+    from_port   = 9090
+    to_port     = 9090
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "Node Exporter"
+    from_port   = 9100
+    to_port     = 9100
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "Grafana Dashboard"
+    from_port   = 3000
+    to_port     = 3000
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -73,7 +97,7 @@ resource "aws_instance" "task_server" {
   key_name = aws_key_pair.task_key.key_name
 
   vpc_security_group_ids = [
-    aws_security_group.task_sg.id
+    aws_security_group.task_security_group.id
   ]
 
   root_block_device {
