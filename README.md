@@ -322,7 +322,7 @@ Monitoring stack includes:
 
 | Service | URL |
 |------|------|
-API | http://3.109.132.73 |
+API | http://3.109.132.73/tasks |
 Prometheus | http://3.109.132.73:9090 |
 Node Exporter | http://3.109.132.73:9100/metrics |
 Grafana | http://3.109.132.73:3000 |
