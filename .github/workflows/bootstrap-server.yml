@@ -30,4 +30,5 @@ jobs:
           ansible-playbook \
           -i ansible/inventory.ini \
           ansible/install_docker.yml \
-          --private-key ~/.ssh/id_rsa
+          --private-key ~/.ssh/id_rsa \
+          --ssh-extra-args "-o StrictHostKeyChecking=no"
