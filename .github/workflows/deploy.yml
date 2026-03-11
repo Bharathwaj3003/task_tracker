@@ -50,6 +50,9 @@ jobs:
 
           cd /home/ubuntu
 
+          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login \
+          -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
+
           sed -i "s|IMAGE_TAG|${IMAGE_TAG}|g" docker-compose.yml
 
           docker compose pull
